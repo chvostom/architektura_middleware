@@ -23,7 +23,7 @@ The class that implements conversion from entered text to JSON format. The class
 ## Testing and results
 There are some example inputs in the root folder. Output and results are saved as pictures and are saved in /results folder.
 
-Basic test 1: Example from courses.fit.cvut (input file: xref:01/results/test1.txt#[test1.txt], output file: xref:01/results/test1.png#[test1.png])  
+Basic test 1: Example from courses.fit.cvut (input file: xref:01/results/test1#[test1], output file: xref:01/results/test1.png#[test1.png])  
 
 Basic test 2: Another example for main functionality testing (input file: xref:01/test2.txt#[test2.txt], output file: xref:01/results/test2.png#[test2.png])
 
