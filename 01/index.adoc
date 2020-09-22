@@ -24,11 +24,19 @@ The class that implements conversion from entered text to JSON format. The class
 There are some example inputs in the root folder. Output and results are saved as pictures and are saved in /results folder.
 
 Basic test1: Example from courses.fit.cvut (input file: test1.txt, output file: test1.png)  
+
 Basic test2: Another example for main functionality testing (input file: test2.txt, output file: test2.png)
+
 Basic test3: More than 3 person names testing (input file: test3.txt, output files: test3a.png and test3b.png) 
+
 Basic test4: No person detail testing (input file: test4.txt, output file: test4.png) 
 
-Error test1: Wrong data format testing (input file: testError1.txt, output file: testError1.png) 
+
+Error test1: Wrong data format testing (input file: testError1.txt, output file: testError1.png)
+ 
 Error test2: Empty data testing (input file: testError2.txt, output file: testError2.png) 
+
 Error test3: One missing quotation marks testing (input file: testError3.txt, output file: testError3.png) 
+
 Error test4: More missing quotation mark stesting  (input file: testError4.txt, output file: testError4.png) 
+

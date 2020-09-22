@@ -1,0 +1,40 @@
+# Homework 2. HTTP Application Protocol - telnet, openssl, cURL
+
+Tolls for testing protocols.
+
+## Task
+
+
+### Telnet
+
+
+1) create HTTP GET request using telnet to url http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/httpTelnet1 with following specification:
+
+    a) user agent - fit-telnet
+
+    b) only text/html in utf8 and en-US should be accepted
+
+
+
+2) create HTTP POST request using telnet to url http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/httpTelnet2 with following specification:
+
+    a) set referer to “mi-mdw”
+
+    b) content type application/x-www-form-urlencoded
+
+    c) send data in format data=fit
+
+
+### cURL
+
+
+Open this page and follow instructions http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol
+
+
+## Solution
+
+Both solutions are in the root folder of 02/
+
+Logs for telnet solution is in the telnet.log file.
+Logs for cURL solution is in the curl.log file.
+
