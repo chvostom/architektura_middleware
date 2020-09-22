@@ -35,6 +35,6 @@ Open this page and follow instructions http://147.32.233.18:8888/NI-AM1-Applicat
 
 Both solutions are in the root folder of results/.
 
-Logs for telnet solution is in the xref:02/results/telnet.log#[telnet] file.
-Logs for cURL solution is in the xref:02/results/curl.log#[curl] file.
+Logs for telnet solution is in the xref:02/results/telnet.log#[telnet.log] file.
+Logs for cURL solution is in the xref:02/results/curl.log#[curl.log] file.
 
