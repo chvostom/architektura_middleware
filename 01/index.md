@@ -1,0 +1,34 @@
+# Homework 1. Integration Issues - Transformation of formats
+
+## Task
+
+Suppose that a customer of a travel agency submits his booking for a tour as a plain text (e.g. submissions via mail). In order to properly process such input in any system, a machine readable and standardized format is needed.
+
+## Implementation
+
+Everything related to the implementation side of this homework is located in the src/main/java folder.
+
+### src/main/java/services/WebApplication.java 
+
+The class has void main, that starts a simple Spring web application and transformation function, that is microservice for input text transformation. 
+
+### src/main/java/parser/PersonDetail.java
+
+The class that represents individual person details.
+
+### src/main/java/parser/TextToJSONParser.java
+
+The class that implements conversion from entered text to JSON format. The class has methods constructJSON. Method constructJSON builds the JSON string.
+
+## Testing and results
+There are some example inputs in the root folder. Output and results are saved as pictures and are saved in /results folder.
+
+Basic test1: Example from courses.fit.cvut (input file: test1.txt, output file: test1.png)  
+Basic test2: Another example for main functionality testing (input file: test2.txt, output file: test2.png)
+Basic test3: More than 3 person names testing (input file: test3.txt, output files: test3a.png and test3b.png) 
+Basic test4: No person detail testing (input file: test4.txt, output file: test4.png) 
+
+Error test1: Wrong data format testing (input file: testError1.txt, output file: testError1.png) 
+Error test2: Empty data testing (input file: testError2.txt, output file: testError2.png) 
+Error test3: One missing quotation marks testing (input file: testError3.txt, output file: testError3.png) 
+Error test4: More missing quotation mark stesting  (input file: testError4.txt, output file: testError4.png) 

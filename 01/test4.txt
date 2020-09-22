@@ -1,0 +1,11 @@
+Dear Mr. Jones,
+
+I am writing to send some test data to show functionality of JSON convertor:
+
+===
+
+
+===
+
+Regards,
+Pepa

@@ -1,0 +1,46 @@
+(base) chvostom@tomas-pc:~$ curl http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol
+<html>
+<head>
+<title>Protocol</title>
+</head>
+<body>
+<h1>Protocol</h1>
+<p>Your next page is <a href="./protocol/welcome">/protocol/welcome</a></p>
+<pre>curl http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/welcome</pre>
+<p><a href="http://curl.haxx.se/docs/httpscripting.html">Help</a></p>
+</body>
+</html>
+(base) chvostom@tomas-pc:~$ curl http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/welcome
+OK
+Your next page is /protocol/get
+send GET parameter "name" with value "heads" 
+set Header "Accept" to "text/plain" 
+(base) chvostom@tomas-pc:~$ curl -X GET -H"Accept: text/plain"  http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/get?name=heads
+OK
+Your next page is /protocol/post 
+send POST parameter "name" with value "cons"
+and set Header "Accept" is "text/plain" 
+and set Header "Accept-Language" is "en-US" 
+(base) chvostom@tomas-pc:~$ curl -X POST -H"Accept: text/plain" -H"Accept-Language: en-US" -d "name=cons"  http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/post
+OK
+Your next page is /protocol/referer 
+change referer to value "devoted"
+set Header "Accept" is "text/html" 
+(base) chvostom@tomas-pc:~$ curl --referer "devoted" -H"Accept: text/html"  http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/referer
+OK
+Your next page is /protocol/useragent
+and change User-Agent to value "deuteronomy"
+and set Header "Accept-Language" is "en-US" 
+(base) chvostom@tomas-pc:~$ curl --user-agent "deuteronomy" -H"Accept-Language: en-US"  http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/useragent
+OK
+Your next page is /protocol/cookie 
+send cookie called "name" with value "water"
+(base) chvostom@tomas-pc:~$ curl --cookie "name=water"  http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/cookie
+OK
+Your next page is /protocol/auth 
+authenticate by "faulty:engage"
+set Header "Accept" is "text/html" 
+(base) chvostom@tomas-pc:~$ curl --user "faulty:engage" -H"Accept: text/html" http://147.32.233.18:8888/NI-AM1-ApplicationProtocols/protocol/auth
+OK
+Your final result is: regards
+

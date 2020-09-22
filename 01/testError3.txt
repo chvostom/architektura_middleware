@@ -1,0 +1,18 @@
+Dear Mr. Jones,
+
+I am writing to send some test data to show functionality of JSON convertor:
+
+===
+Id of a flight: "51"
+Location: "Uruguay"
+City: "Montevideo"
+Address: "Rambla Edison, 11800 Montevideo, Departamento de Montevideo, Uruguay"
+GPS location: "-34.885363, -56.197103"
+Phone number: "+421712123456"
+Email: NdJS@am1.com"
+Person: "Nelson de Jesus Silva"
+
+===
+
+Regards,
+Dida
