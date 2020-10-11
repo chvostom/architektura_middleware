@@ -1,1 +1,27 @@
-= HW3 - TBD!
+# Homework 3. Web Services
+
+## Task
+
+Implement a simple SOAP/SWDL Web Service for management of Flight bookings. Use "Contract-First" approach and define XML Schema first. As storage you can use a static List in Java. Implement operations for: 
+
+1) listing existing bookings
+2) add booking
+3) remove booking
+4) update booking 
+
+Each Flight booking should be described by at least: passenger information, departure and arrival dates aligned with airport identifiers.
+
+
+Import the service WSDL in the SoapUI. Create a Test Case for each operation. Add assertions to validate outputs of operation. The Test Cases should cover the simple scenario: check the initial state, add or modify item, check the state, remove any item and check the state as well.
+
+## Implementation
+
+The source code of my solution is located in IDEA/src/main/java/com/am1 folder.
+
+The xsd file is located in IDEA/src/main/resources folder.
+
+Generated classes are located in IDEA/target/generated-sources/jaxb/com/am1/_03.
+
+## SoapUI
+
+SoapUI project is located in SoapUI/ folder. There are also in separate folders screens with test cases for each operation with assertations to validate outputs. All test cases are descripted in testsDescription.pdf file. File with SoapUI project is in BookingServices-soapui-project.xml file.

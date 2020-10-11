@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="db465b61-0a6c-463d-ab19-34469e3b76ed" activeEnvironment="Default" name="BookingServices" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="2df51e96-0804-491f-82e9-bd58b667912b" wsaVersion="NONE" name="BookingPortSoap11" type="wsdl" bindingName="{http://am1.com/03}BookingPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/bookingServices.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/bookingServices.wsdl"><con:part><con:url>http://localhost:8080/ws/bookingServices.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://am1.com/03" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://am1.com/03" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://am1.com/03">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://am1.com/03" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="booking">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="passportNumber" type="xs:int"/>
+          <xs:element name="departureDate" type="xs:string"/>
+          <xs:element name="arrivalDate" type="xs:string"/>
+          <xs:element name="departureAirport" type="xs:string"/>
+          <xs:element name="arrivalAirport" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getBookingRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBookingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="booking" type="tns:booking"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllBookingsRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllBookingsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="booking" type="tns:booking"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addBookingRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="booking" type="tns:booking"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addBookingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateBookingRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="booking" type="tns:booking"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateBookingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteBookingRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteBookingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllBookingsResponse">
+    <wsdl:part element="tns:getAllBookingsResponse" name="getAllBookingsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookingRequest">
+    <wsdl:part element="tns:updateBookingRequest" name="updateBookingRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookingRequest">
+    <wsdl:part element="tns:getBookingRequest" name="getBookingRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllBookingsRequest">
+    <wsdl:part element="tns:getAllBookingsRequest" name="getAllBookingsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBookingRequest">
+    <wsdl:part element="tns:deleteBookingRequest" name="deleteBookingRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookingResponse">
+    <wsdl:part element="tns:updateBookingResponse" name="updateBookingResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBookingResponse">
+    <wsdl:part element="tns:deleteBookingResponse" name="deleteBookingResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBookingRequest">
+    <wsdl:part element="tns:addBookingRequest" name="addBookingRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookingResponse">
+    <wsdl:part element="tns:getBookingResponse" name="getBookingResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBookingResponse">
+    <wsdl:part element="tns:addBookingResponse" name="addBookingResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BookingPort">
+    <wsdl:operation name="getAllBookings">
+      <wsdl:input message="tns:getAllBookingsRequest" name="getAllBookingsRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllBookingsResponse" name="getAllBookingsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBooking">
+      <wsdl:input message="tns:updateBookingRequest" name="updateBookingRequest"></wsdl:input>
+      <wsdl:output message="tns:updateBookingResponse" name="updateBookingResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBooking">
+      <wsdl:input message="tns:getBookingRequest" name="getBookingRequest"></wsdl:input>
+      <wsdl:output message="tns:getBookingResponse" name="getBookingResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBooking">
+      <wsdl:input message="tns:deleteBookingRequest" name="deleteBookingRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteBookingResponse" name="deleteBookingResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBooking">
+      <wsdl:input message="tns:addBookingRequest" name="addBookingRequest"></wsdl:input>
+      <wsdl:output message="tns:addBookingResponse" name="addBookingResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookingPortSoap11" type="tns:BookingPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllBookings">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllBookingsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllBookingsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBooking">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateBookingRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateBookingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBooking">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getBookingRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBooking">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteBookingRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteBookingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBooking">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addBookingRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addBookingResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookingPortService">
+    <wsdl:port binding="tns:BookingPortSoap11" name="BookingPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="4831d9d1-fc34-4f3b-b5b5-91f059ec528c" isOneWay="false" action="" name="addBooking" bindingOperationName="addBooking" type="Request-Response" outputName="addBookingResponse" inputName="addBookingRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cedce858-cae5-4635-a745-4de13ec7a539" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:addBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>0</ns:id>\r
+            <ns:firstName>Rogers</ns:firstName>\r
+            <ns:lastName>Federer</ns:lastName>\r
+            <ns:passportNumber>10304080</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 02:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 03:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:addBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://am1.com/03/BookingPort/addBookingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4fdcf985-c9a6-40bc-82d3-eeaeb7e71c9d" isOneWay="false" action="" name="deleteBooking" bindingOperationName="deleteBooking" type="Request-Response" outputName="deleteBookingResponse" inputName="deleteBookingRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a18c8ce0-2640-4c9f-848c-b0dac4ea6bbe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:deleteBookingRequest>\r
+         <ns:id>9903</ns:id>\r
+      </ns:deleteBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://am1.com/03/BookingPort/deleteBookingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a716edc3-702f-4df1-8d08-9ebb1ea69120" isOneWay="false" action="" name="getAllBookings" bindingOperationName="getAllBookings" type="Request-Response" outputName="getAllBookingsResponse" inputName="getAllBookingsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b157ff0b-c89d-4736-a948-f9dbe2640c02" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getAllBookingsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://am1.com/03/BookingPort/getAllBookingsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ef0a5b49-9128-4af7-8c02-64094d11f7db" isOneWay="false" action="" name="getBooking" bindingOperationName="getBooking" type="Request-Response" outputName="getBookingResponse" inputName="getBookingRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="373e49fd-e1db-4449-8ac2-47f9abf3ab05" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getBookingRequest>\r
+         <ns:id>9902</ns:id>\r
+      </ns:getBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://am1.com/03/BookingPort/getBookingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="93762c43-f9ba-400e-b239-2474d58ec298" isOneWay="false" action="" name="updateBooking" bindingOperationName="updateBooking" type="Request-Response" outputName="updateBookingResponse" inputName="updateBookingRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0d001a72-475d-42e6-b0f4-8f0ff6ac8951" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:updateBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>9903</ns:id>\r
+            <ns:firstName>Tomas</ns:firstName>\r
+            <ns:lastName>Berdych</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>01/01/2020 12:30</ns:departureDate>\r
+            <ns:arrivalDate>01/01/2020 13:30</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:updateBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://am1.com/03/BookingPort/updateBookingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="d9ce12ab-f581-4c81-85fd-bc40c364c868" name="TestCases"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a5fa2878-07d9-475d-b16b-82e7781c248e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetBookingsTest - 1" searchProperties="true"><con:settings/><con:testStep type="request" id="f64c74e3-51cb-46d6-bc73-3a95a86d7c69" name="GetBooking - Correct way"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getBooking</con:operation><con:request name="GetBooking - Correct way" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="99f47672-e88f-4a18-b81a-e6a7dd0a18a7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getBookingRequest>\r
+         <ns:id>9902</ns:id>\r
+      </ns:getBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8c823604-e5f5-4242-b13b-6195cec7b8e3" name="SOAP Response"/><con:assertion type="XPath Match" id="07464d4d-1889-4f4f-9d97-c2d0c5206e8a" name="XPath Match - Status code"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:statusCode</path><content>SUCCESS</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="bc9e28fa-faad-4345-8774-afb98d62945d" name="XPath Match - Booking"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:booking</path><content><![CDATA[<ns2:booking xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:id>9902</ns2:id>
+  <ns2:firstName>Novak</ns2:firstName>
+  <ns2:lastName>Djokovic</ns2:lastName>
+  <ns2:passportNumber>80706050</ns2:passportNumber>
+  <ns2:departureDate>11/10/2020 10:00</ns2:departureDate>
+  <ns2:arrivalDate>12/10/2020 02:45</ns2:arrivalDate>
+  <ns2:departureAirport>Amsterdam NL</ns2:departureAirport>
+  <ns2:arrivalAirport>Peking CHN</ns2:arrivalAirport>
+</ns2:booking>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="0187abee-e6d4-499b-b8c6-6b3bb22ed448" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Found Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://am1.com/03/BookingPort/getBookingRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetBooking - Wrong way" id="18e473de-9948-45a7-9e28-9defcfdd541a"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getBooking</con:operation><con:request name="GetBooking - Wrong way" id="498a3256-d9cc-49dc-9d6e-15e2ee4bdf89"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getBookingRequest>\r
+         <ns:id>9900</ns:id>\r
+      </ns:getBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b344b783-22c5-4104-a1a8-462690201aa7"/><con:assertion type="XPath Match" id="8e658938-ad48-4722-b7e7-ceb028db439f" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>CONFLICT</ns2:statusCode>
+  <ns2:message>Exception while finding Entity: No booking with id: 9900!</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetAllBookings" id="973f7ef4-76c1-4aa6-860f-d39ece537b9c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getAllBookings</con:operation><con:request name="GetAllBookings" id="ceed0937-ae2e-4734-9db6-a0a803c059a6"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getAllBookingsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="429f5bdc-ae0a-4886-af06-3d95904f1165"/><con:assertion type="XPath Match" id="6b4bb375-5a0f-4ea9-b113-0702f8fe0ba6" name="XPath Match - Count"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+count(//ns2:booking)</path><content>2</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="0733f895-cdd7-4570-96e5-1d2d3c813eac" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Found Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="26ba9667-5d27-4ed7-b3a8-b19709cc7aa0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CorrectAddDeleteBookingTest - 2" searchProperties="true"><con:settings/><con:testStep type="request" name="AddBooking" id="12b49c95-9af8-48e0-933e-1cb093b19b8b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>addBooking</con:operation><con:request name="AddBooking" id="078104ad-942a-46de-b7ec-5f47bf8953f2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:addBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>9903</ns:id>\r
+            <ns:firstName>Roger</ns:firstName>\r
+            <ns:lastName>Federer</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:addBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="71b5fc1b-2a5c-4dbf-aaaf-74ea316ccfb0"/><con:assertion type="XPath Match" id="02523078-ed00-4a70-9927-5b9342f511a5" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Added Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetAllBookings" id="06f23c5c-32eb-43dd-9eea-f3b2d273d90f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getAllBookings</con:operation><con:request name="GetAllBookings" id="d182725c-6bc5-477c-9486-67d73f208e2a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getAllBookingsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="15e5523a-1f46-41b1-9fb5-02eb44a65d06"/><con:assertion type="XPath Match" id="57b0a5db-a5af-459d-ae4b-eb32a53ab24f" name="XPath Match - Count"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+count(//ns2:booking)</path><content>3</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="054c4f97-d30e-4922-af2b-f99091e1f89b" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Found Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="DeleteBooking" id="1b131f87-7d92-4417-8a75-b2cdfc44c4f9"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>deleteBooking</con:operation><con:request name="DeleteBooking" id="70f51f59-dd30-488b-8524-abab74583581"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:deleteBookingRequest>\r
+         <ns:id>9903</ns:id>\r
+      </ns:deleteBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0f17d38b-48b0-4624-91e0-71e958cb8782"/><con:assertion type="XPath Match" id="4d5ade9b-ea85-4e86-b630-ad8bd7bb3c65" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Deleted Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetAllBookings2" id="9a6224ba-1340-4be8-be98-cbb7e4b4dda3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getAllBookings</con:operation><con:request name="GetAllBookings2" id="bfcaa2ba-75e0-410f-9128-f1ea18692060"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getAllBookingsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9b2b4cfb-0a7e-43fd-aec2-75a4d4ab29ce"/><con:assertion type="XPath Match" id="0da7d455-e784-4ef8-bc85-d8d3d1e1c9cb" name="XPath Match - Count"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+count(//ns2:booking)</path><content>2</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="e5917fd5-110c-436e-bf12-31f94f2e88bc" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Found Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f7820ed6-8a66-4773-a45e-f43368fae24b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="WrongAddBookingTest - 3" searchProperties="true"><con:settings/><con:testStep type="request" name="AddBooking - Zero" id="ce7be193-dcd0-4f18-8860-c2536c9ba580"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>addBooking</con:operation><con:request name="AddBooking - Zero" id="2a7ab914-0db0-4681-b5a0-d80dede5fd91"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:addBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>0</ns:id>\r
+            <ns:firstName>Roger</ns:firstName>\r
+            <ns:lastName>Federer</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:addBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5c3bcb7d-ed50-4d96-b8c2-8e7433b35a7a"/><con:assertion type="XPath Match" id="119bee25-dc12-4248-8e03-091bf40d734d" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>CONFLICT</ns2:statusCode>
+  <ns2:message>Exception while adding Entity: Booking with id 0 forbidden!</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="AddBooking - Existing id" id="129341df-402a-4a9d-a325-b948f99f4a9a"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>addBooking</con:operation><con:request name="AddBooking - Existing id" id="311533b4-6848-4175-9384-7a84de04ed92"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:addBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>9901</ns:id>\r
+            <ns:firstName>Roger</ns:firstName>\r
+            <ns:lastName>Federer</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:addBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3ecccd6c-e24e-4c27-87d7-4cfd4c332882"/><con:assertion type="XPath Match" id="d18f3ace-80b1-4725-8780-c9206b5ce4da" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>CONFLICT</ns2:statusCode>
+  <ns2:message>Exception while adding Entity: Booking with id: 9901 already exists!</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="2d8a816e-0d53-4eeb-a0ac-612ae676d8f2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CorrectUpdateBookingTest - 4" searchProperties="true"><con:settings/><con:testStep type="request" name="AddBooking" id="359b22b1-e6b4-46ab-9739-0a39838b79f6"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>addBooking</con:operation><con:request name="AddBooking" id="71b0dd0a-3b50-495c-92ec-a23bf06820f9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:addBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>9903</ns:id>\r
+            <ns:firstName>Roger</ns:firstName>\r
+            <ns:lastName>Federer</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:addBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0bc01020-c9cd-4367-a1fb-a1ad50680c14"/><con:assertion type="XPath Match" id="e1febe9b-a76d-4de0-bee2-fe962094c440" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Added Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetBooking" id="68da79ac-4830-46bf-97d6-6b15029ccdc4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getBooking</con:operation><con:request name="GetBooking" id="b39741e8-4623-4805-a001-d68e9edc5603"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getBookingRequest>\r
+         <ns:id>9903</ns:id>\r
+      </ns:getBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="25a09626-186d-4d3f-9ce2-9786392e2b84"/><con:assertion type="XPath Match" id="6ff2ca0e-0084-453a-a93b-b7710572533e" name="XPath Match - Booking"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:booking</path><content><![CDATA[<ns2:booking xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:id>9903</ns2:id>
+  <ns2:firstName>Roger</ns2:firstName>
+  <ns2:lastName>Federer</ns2:lastName>
+  <ns2:passportNumber>11223344</ns2:passportNumber>
+  <ns2:departureDate>11/10/2020 12:00</ns2:departureDate>
+  <ns2:arrivalDate>11/10/2020 13:00</ns2:arrivalDate>
+  <ns2:departureAirport>Prague CZE</ns2:departureAirport>
+  <ns2:arrivalAirport>Paris FRA</ns2:arrivalAirport>
+</ns2:booking>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="bc3ec09c-0e2e-4ef1-a9ee-d15fdec0f0dc" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Found Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="UpdateBooking" id="fdbd220e-d3b1-4ed6-a206-0ebd6a20d73e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>updateBooking</con:operation><con:request name="UpdateBooking" id="da356ae9-f306-47f1-927c-502d9bd9f201"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:updateBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>9903</ns:id>\r
+            <ns:firstName>Tomas</ns:firstName>\r
+            <ns:lastName>Berdych</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:updateBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="97204546-5a32-4f5d-a44c-95d807a0932f"/><con:assertion type="XPath Match" id="13c2bfe9-ad38-404b-b398-a6471c87a775" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Updated Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="GetUpdatedBooking" id="b14e77a4-f196-410b-aa17-6b4754b461f1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>getBooking</con:operation><con:request name="GetUpdatedBooking" id="c30c08c3-c7b6-4d3c-8875-90bc586716c5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:getBookingRequest>\r
+         <ns:id>9903</ns:id>\r
+      </ns:getBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a5847aa2-7e62-4f3d-a928-0dfab059c140"/><con:assertion type="XPath Match" id="4786c518-5ace-4ceb-b7d6-d742e90e4c73" name="XPath Match - Booking"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:booking</path><content><![CDATA[<ns2:booking xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:id>9903</ns2:id>
+  <ns2:firstName>Tomas</ns2:firstName>
+  <ns2:lastName>Berdych</ns2:lastName>
+  <ns2:passportNumber>11223344</ns2:passportNumber>
+  <ns2:departureDate>11/10/2020 12:00</ns2:departureDate>
+  <ns2:arrivalDate>11/10/2020 13:00</ns2:arrivalDate>
+  <ns2:departureAirport>Prague CZE</ns2:departureAirport>
+  <ns2:arrivalAirport>Paris FRA</ns2:arrivalAirport>
+</ns2:booking>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="65592475-ebd8-4c4d-9fa5-a7758df18ce7" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Found Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="DeleteBooking" id="8ee0979a-a985-454d-b150-5be846d77717"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>deleteBooking</con:operation><con:request name="DeleteBooking" id="9b7c9367-9957-41e3-9a17-c38afd36884c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:deleteBookingRequest>\r
+         <ns:id>9903</ns:id>\r
+      </ns:deleteBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2eaeb012-50e6-4512-8061-af25c605a55f"/><con:assertion type="XPath Match" id="8e260c8c-25e9-408f-9942-fac788068c27" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Deleted Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="bf4c1ce4-9d30-4a14-a2a0-304a83253c42" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="WrongUpdateBookingTest - 5" searchProperties="true"><con:settings/><con:testStep type="request" name="UpdateNonExistingBooking" id="cc9ca9e7-2293-4260-ab5b-b7b62bc4d303"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>updateBooking</con:operation><con:request name="UpdateNonExistingBooking" id="105cab16-a5c8-4868-a3e5-f2f18aa6bbb8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:updateBookingRequest>\r
+         <ns:booking>\r
+            <ns:id>9903</ns:id>\r
+            <ns:firstName>Roger</ns:firstName>\r
+            <ns:lastName>Federer</ns:lastName>\r
+            <ns:passportNumber>11223344</ns:passportNumber>\r
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>\r
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>\r
+            <ns:departureAirport>Prague CZE</ns:departureAirport>\r
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>\r
+         </ns:booking>\r
+      </ns:updateBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c887c228-4841-47e0-bc9a-3331f23b75b7"/><con:assertion type="XPath Match" id="c2f5d311-de11-4555-8936-9ba65c8c5f38" name="XPath Match"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>CONFLICT</ns2:statusCode>
+  <ns2:message>Exception while updating Entity: No booking with id: 9903!</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="AddBooking" id="160cb4e4-e711-4b90-94cb-fd30db8c32f7"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>addBooking</con:operation><con:request name="AddBooking" id="14d076d3-cded-4b53-8ebd-7d14e2d1be91"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:addBookingRequest>\r
+         <ns:booking>
+            <ns:id>9903</ns:id>
+            <ns:firstName>Roger</ns:firstName>
+            <ns:lastName>Federer</ns:lastName>
+            <ns:passportNumber>11223344</ns:passportNumber>
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>
+            <ns:departureAirport>Prague CZE</ns:departureAirport>
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>
+         </ns:booking>
+      </ns:addBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3568a836-d940-499f-bca5-50f3fafa19d5"/><con:assertion type="XPath Match" id="35e53bd2-01c7-4b86-bbdf-d1826227ada8" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Added Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="UpdateBooking - Same values" id="5a3fc1d3-3052-45b1-a341-ed4634bf4be3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>updateBooking</con:operation><con:request name="UpdateBooking - Same values" id="b543abdc-6362-4c29-befc-5981ecc66c47"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:updateBookingRequest>\r
+         <ns:booking>
+            <ns:id>9903</ns:id>
+            <ns:firstName>Roger</ns:firstName>
+            <ns:lastName>Federer</ns:lastName>
+            <ns:passportNumber>11223344</ns:passportNumber>
+            <ns:departureDate>11/10/2020 12:00</ns:departureDate>
+            <ns:arrivalDate>11/10/2020 13:00</ns:arrivalDate>
+            <ns:departureAirport>Prague CZE</ns:departureAirport>
+            <ns:arrivalAirport>Paris FRA</ns:arrivalAirport>
+         </ns:booking>\r
+      </ns:updateBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a0fc0ad7-2841-4e72-9694-05a6f4f4d351"/><con:assertion type="XPath Match" id="ea364052-9265-402c-b959-4e66ce193921" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>CONFLICT</ns2:statusCode>
+  <ns2:message>Exception while updating Entity: Booking with same attributes already exists!</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="DeleteBooking" id="765de881-707f-469d-8e6c-56ee50368925"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>deleteBooking</con:operation><con:request name="DeleteBooking" id="14a66dda-7ea5-42d1-8a10-f1f134a1224c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:deleteBookingRequest>\r
+         <ns:id>9903</ns:id>\r
+      </ns:deleteBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c5a7085d-a536-46f0-8d47-aa29b290d2b5"/><con:assertion type="XPath Match" id="8db51e7f-c454-45be-91cc-c2a3321bd503" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>SUCCESS</ns2:statusCode>
+  <ns2:message>Content Deleted Successfully</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ec2641c9-5d74-4075-904d-2101790e05c9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="WrongDeleteBookingTest - 6" searchProperties="true"><con:settings/><con:testStep type="request" name="DeleteNonExistingBooking" id="b3af3901-1610-4e14-95ae-3a68e81294ee"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BookingPortSoap11</con:interface><con:operation>deleteBooking</con:operation><con:request name="DeleteNonExistingBooking" id="a375d82d-f393-4425-9940-5e319e449fc3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://am1.com/03">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:deleteBookingRequest>\r
+         <ns:id>9900</ns:id>\r
+      </ns:deleteBookingRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7c6f121f-5457-4430-9663-84b7c66a6db7"/><con:assertion type="XPath Match" id="b6691683-ffc2-47c3-a4d4-3fb0ec84241d" name="XPath Match - Service status"><con:configuration><path>declare namespace SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns2='http://am1.com/03';
+//ns2:serviceStatus</path><content><![CDATA[<ns2:serviceStatus xmlns:ns2="http://am1.com/03" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <ns2:statusCode>CONFLICT</ns2:statusCode>
+  <ns2:message>Exception while deleting Entity: No booking with id: 9900!</ns2:message>
+</ns2:serviceStatus>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
