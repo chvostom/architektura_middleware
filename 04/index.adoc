@@ -1,1 +1,34 @@
-= HW4 - TBD!
+# Homework 4. Web Service Composition
+
+## Task
+
+Implement a Payment Web Service (SOAP/WSDL). Use "Contract-First" approach and define XML Schema first. As storage you can use a static List in Java. Implement operations:
+
+1) List all payments
+
+2) Add a new payment requiring parameters: credit card number, credit card owner, order identifier.
+
+
+New payment can be accepted only with valid card identifiers. During processing of the payment validate data using existing Card Validation:
+
+1) Web Service: http://147.32.233.18:8888/NI-AM1-CardValidation/ws/card.wsdl. 
+
+2) Valid data: cardNumber="1234-1234-1234-1234" & cardOwner="CardOwner"
+
+
+Publish the source code of your solution and at least one example of your inputs and outputs.
+
+## Implementation
+
+The source code of my solution is located in IDEA/src/main/java/com/am1 folder. There are two separate packages for client and server.
+
+The xsd file for payments is located in IDEA/src/main/resources folder and it is paymentServices.xsd.
+
+Generated classes for card validation are located in IDEA\target\generated-sources\xjc\https\courses_fit_cvut_cz\ni_am1\hw\web_services.
+
+Other generated classes are in folder IDEA\target\generated-sources\xjc\com\am1\_04.
+
+
+## SoapUI
+
+Tests were made in SoapUI. SoapUI project is located in SoapUI/ folder. There are also in separate folders screens with test cases for each operation with assertations to validate outputs. All test cases are descripted in testsDescription.pdf file. File with SoapUI project is in Payments-soapui-project.xml file.
