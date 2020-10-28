@@ -1,1 +1,13 @@
-= HW5 - TBD!
+# Homework 5. RESTful API Design - resources, URIs, operations
+
+## Task
+
+A company runs an application for a travel agency. Design a RESTful service where the resources have the base URI: http://t-a.org. The data model contains following entities: country (1) ← (0..N) location (1) ← (0..N) tour (0..N) → (0..N) customer. Your solution should cover all CRUD operations for each entity/resource.
+
+Design view on data model and design and describe the URIs of resources (At least one resource should provide filtering using query string parameter). Describe all available operations, associated method and possible status codes.
+
+## Implementation
+
+Documentation is in RESTAPIdocumentation folder. Just open file index.html.
+
+In case a problem occurs, there is also swagger JSON file in SwaggerJSON folder and also generated PDF in SwaggerPDF folder.
