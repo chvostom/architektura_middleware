@@ -1538,7 +1538,12 @@ import java.util.*;
 public class CountryApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
+
         CountryApi apiInstance = new CountryApi();
         try {
             array[Country] result = apiInstance.getCountries();
@@ -1573,7 +1578,12 @@ public class CountryApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Country-getCountries-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
 CountryApi *apiInstance = [[CountryApi alloc] init];
 
 // Get all countries
@@ -1591,6 +1601,11 @@ CountryApi *apiInstance = [[CountryApi alloc] init];
 
                             <div class="tab-pane" id="examples-Country-getCountries-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
+var defaultClient = Am1TravelAgency.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.CountryApi()
 
@@ -1622,6 +1637,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CountryApi();
 
             try
@@ -1644,6 +1662,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $api_instance = new Swagger\Client\Api\CountryApi();
 
 try {
@@ -1659,6 +1680,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::CountryApi;
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::CountryApi->new();
 
@@ -1677,6 +1701,9 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.CountryApi()
@@ -1787,7 +1814,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Country-getCountryById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "api_key: [[apiKey]]" "http://t-a.org/country/{countryId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "http://t-a.org/country/{countryId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Country-getCountryById-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1803,11 +1830,9 @@ public class CountryApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
 
         CountryApi apiInstance = new CountryApi();
         String countryId = countryId_example; // String | ID of country to return
@@ -1847,10 +1872,8 @@ public class CountryApiExample {
                             <div class="tab-pane" id="examples-Country-getCountryById-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"api_key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api_key"];
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 String *countryId = countryId_example; // ID of country to return
 
@@ -1873,11 +1896,9 @@ CountryApi *apiInstance = [[CountryApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
 var defaultClient = Am1TravelAgency.ApiClient.instance;
 
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['api_key'] = "Token"
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.CountryApi()
 
@@ -1912,10 +1933,8 @@ namespace Example
         public void main()
         {
             
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("api_key", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("api_key", "Bearer");
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new CountryApi();
             var countryId = countryId_example;  // String | ID of country to return
@@ -1940,10 +1959,8 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new Swagger\Client\Api\CountryApi();
 $countryId = countryId_example; // String | ID of country to return
@@ -1962,10 +1979,8 @@ try {
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::CountryApi;
 
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'api_key'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'api_key'} = "Bearer";
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::CountryApi->new();
 my $countryId = countryId_example; # String | ID of country to return
@@ -1986,10 +2001,8 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['api_key'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['api_key'] = 'Bearer'
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.CountryApi()
@@ -2389,14 +2402,6 @@ $(document).ready(function() {
                             </div>
 
                             <h3> Status: 201 - Country created </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 204 - No content for updating </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -3063,7 +3068,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Customer-getCustomerById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "api_key: [[apiKey]]" "http://t-a.org/customer/{customerId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "http://t-a.org/customer/{customerId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Customer-getCustomerById-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -3079,11 +3084,9 @@ public class CustomerApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
 
         CustomerApi apiInstance = new CustomerApi();
         Long customerId = 789; // Long | ID of customer to return
@@ -3123,10 +3126,8 @@ public class CustomerApiExample {
                             <div class="tab-pane" id="examples-Customer-getCustomerById-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"api_key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api_key"];
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 Long *customerId = 789; // ID of customer to return
 
@@ -3149,11 +3150,9 @@ CustomerApi *apiInstance = [[CustomerApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
 var defaultClient = Am1TravelAgency.ApiClient.instance;
 
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['api_key'] = "Token"
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.CustomerApi()
 
@@ -3188,10 +3187,8 @@ namespace Example
         public void main()
         {
             
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("api_key", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("api_key", "Bearer");
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new CustomerApi();
             var customerId = 789;  // Long | ID of customer to return
@@ -3216,10 +3213,8 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new Swagger\Client\Api\CustomerApi();
 $customerId = 789; // Long | ID of customer to return
@@ -3238,10 +3233,8 @@ try {
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::CustomerApi;
 
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'api_key'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'api_key'} = "Bearer";
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::CustomerApi->new();
 my $customerId = 789; # Long | ID of customer to return
@@ -3262,10 +3255,8 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['api_key'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['api_key'] = 'Bearer'
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.CustomerApi()
@@ -3429,7 +3420,12 @@ import java.util.*;
 public class CustomerApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
+
         CustomerApi apiInstance = new CustomerApi();
         try {
             array[Customer] result = apiInstance.getCustomers();
@@ -3464,7 +3460,12 @@ public class CustomerApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Customer-getCustomers-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
 CustomerApi *apiInstance = [[CustomerApi alloc] init];
 
 // Get all customers
@@ -3482,6 +3483,11 @@ CustomerApi *apiInstance = [[CustomerApi alloc] init];
 
                             <div class="tab-pane" id="examples-Customer-getCustomers-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
+var defaultClient = Am1TravelAgency.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.CustomerApi()
 
@@ -3513,6 +3519,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new CustomerApi();
 
             try
@@ -3535,6 +3544,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $api_instance = new Swagger\Client\Api\CustomerApi();
 
 try {
@@ -3550,6 +3562,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::CustomerApi;
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::CustomerApi->new();
 
@@ -3568,6 +3583,9 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.CustomerApi()
@@ -3931,14 +3949,6 @@ $(document).ready(function() {
                             </div>
 
                             <h3> Status: 201 - Customer created </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 204 - No content for updating </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -4605,7 +4615,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Location-getLocationById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "api_key: [[apiKey]]" "http://t-a.org/location/{locationId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "http://t-a.org/location/{locationId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Location-getLocationById-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -4621,11 +4631,9 @@ public class LocationApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
 
         LocationApi apiInstance = new LocationApi();
         Long locationId = 789; // Long | ID of location to return
@@ -4665,10 +4673,8 @@ public class LocationApiExample {
                             <div class="tab-pane" id="examples-Location-getLocationById-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"api_key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api_key"];
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 Long *locationId = 789; // ID of location to return
 
@@ -4691,11 +4697,9 @@ LocationApi *apiInstance = [[LocationApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
 var defaultClient = Am1TravelAgency.ApiClient.instance;
 
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['api_key'] = "Token"
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.LocationApi()
 
@@ -4730,10 +4734,8 @@ namespace Example
         public void main()
         {
             
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("api_key", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("api_key", "Bearer");
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new LocationApi();
             var locationId = 789;  // Long | ID of location to return
@@ -4758,10 +4760,8 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new Swagger\Client\Api\LocationApi();
 $locationId = 789; // Long | ID of location to return
@@ -4780,10 +4780,8 @@ try {
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::LocationApi;
 
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'api_key'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'api_key'} = "Bearer";
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::LocationApi->new();
 my $locationId = 789; # Long | ID of location to return
@@ -4804,10 +4802,8 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['api_key'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['api_key'] = 'Bearer'
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.LocationApi()
@@ -4971,7 +4967,12 @@ import java.util.*;
 public class LocationApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
+
         LocationApi apiInstance = new LocationApi();
         try {
             array[Location] result = apiInstance.getLocations();
@@ -5006,7 +5007,12 @@ public class LocationApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Location-getLocations-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
 LocationApi *apiInstance = [[LocationApi alloc] init];
 
 // Get all locations
@@ -5024,6 +5030,11 @@ LocationApi *apiInstance = [[LocationApi alloc] init];
 
                             <div class="tab-pane" id="examples-Location-getLocations-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
+var defaultClient = Am1TravelAgency.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.LocationApi()
 
@@ -5055,6 +5066,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new LocationApi();
 
             try
@@ -5077,6 +5091,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $api_instance = new Swagger\Client\Api\LocationApi();
 
 try {
@@ -5092,6 +5109,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::LocationApi;
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::LocationApi->new();
 
@@ -5110,6 +5130,9 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.LocationApi()
@@ -5473,14 +5496,6 @@ $(document).ready(function() {
                             </div>
 
                             <h3> Status: 201 - Location created </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 204 - No content for updating </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>
@@ -6813,7 +6828,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Tour-getTourById-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET -H "api_key: [[apiKey]]" "http://t-a.org/tour/{tourId}"</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "http://t-a.org/tour/{tourId}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Tour-getTourById-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -6829,11 +6844,9 @@ public class TourApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: api_key
-        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-        api_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //api_key.setApiKeyPrefix("Token");
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
 
         TourApi apiInstance = new TourApi();
         Long tourId = 789; // Long | ID of tour to return
@@ -6873,10 +6886,8 @@ public class TourApiExample {
                             <div class="tab-pane" id="examples-Tour-getTourById-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
-// Configure API key authorization: (authentication scheme: api_key)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"api_key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"api_key"];
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 Long *tourId = 789; // ID of tour to return
 
@@ -6899,11 +6910,9 @@ TourApi *apiInstance = [[TourApi alloc] init];
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
 var defaultClient = Am1TravelAgency.ApiClient.instance;
 
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['api_key'] = "Token"
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.TourApi()
 
@@ -6938,10 +6947,8 @@ namespace Example
         public void main()
         {
             
-            // Configure API key authorization: api_key
-            Configuration.Default.ApiKey.Add("api_key", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("api_key", "Bearer");
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new TourApi();
             var tourId = 789;  // Long | ID of tour to return
@@ -6966,10 +6973,8 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new Swagger\Client\Api\TourApi();
 $tourId = 789; // Long | ID of tour to return
@@ -6988,10 +6993,8 @@ try {
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::TourApi;
 
-# Configure API key authorization: api_key
-$WWW::SwaggerClient::Configuration::api_key->{'api_key'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'api_key'} = "Bearer";
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::TourApi->new();
 my $tourId = 789; # Long | ID of tour to return
@@ -7012,10 +7015,8 @@ import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
 
-# Configure API key authorization: api_key
-swagger_client.configuration.api_key['api_key'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['api_key'] = 'Bearer'
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.TourApi()
@@ -7179,7 +7180,12 @@ import java.util.*;
 public class TourApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure OAuth2 access token for authorization: travelagency_auth
+        OAuth travelagency_auth = (OAuth) defaultClient.getAuthentication("travelagency_auth");
+        travelagency_auth.setAccessToken("YOUR ACCESS TOKEN");
+
         TourApi apiInstance = new TourApi();
         try {
             array[Tour] result = apiInstance.getTours();
@@ -7214,7 +7220,12 @@ public class TourApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Tour-getTours-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: travelagency_auth)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
 TourApi *apiInstance = [[TourApi alloc] init];
 
 // Get all tours
@@ -7232,6 +7243,11 @@ TourApi *apiInstance = [[TourApi alloc] init];
 
                             <div class="tab-pane" id="examples-Tour-getTours-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Am1TravelAgency = require('am1___travel_agency');
+var defaultClient = Am1TravelAgency.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: travelagency_auth
+var travelagency_auth = defaultClient.authentications['travelagency_auth'];
+travelagency_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new Am1TravelAgency.TourApi()
 
@@ -7263,6 +7279,9 @@ namespace Example
         public void main()
         {
             
+            // Configure OAuth2 access token for authorization: travelagency_auth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
             var apiInstance = new TourApi();
 
             try
@@ -7285,6 +7304,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: travelagency_auth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $api_instance = new Swagger\Client\Api\TourApi();
 
 try {
@@ -7300,6 +7322,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::TourApi;
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+$WWW::SwaggerClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 my $api_instance = WWW::SwaggerClient::TourApi->new();
 
@@ -7318,6 +7343,9 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: travelagency_auth
+swagger_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = swagger_client.TourApi()
@@ -7681,14 +7709,6 @@ $(document).ready(function() {
                             </div>
 
                             <h3> Status: 201 - Tour created </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 204 - No content for updating </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>

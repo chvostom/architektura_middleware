@@ -61,7 +61,14 @@
           "400": {
             "description": "Bad request"
           }
-        }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:customers"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -140,9 +147,6 @@
           "201": {
             "description": "Customer created"
           },
-          "204": {
-            "description": "No content for updating"
-          },
           "400": {
             "description": "Invalid ID supplied"
           },
@@ -201,7 +205,9 @@
         },
         "security": [
           {
-            "api_key": []
+            "travelagency_auth": [
+              "read:customers"
+            ]
           }
         ]
       },
@@ -275,7 +281,14 @@
           "400": {
             "description": "Bad request"
           }
-        }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:tours"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -354,9 +367,6 @@
           "201": {
             "description": "Tour created"
           },
-          "204": {
-            "description": "No content for updating"
-          },
           "400": {
             "description": "Invalid ID supplied"
           },
@@ -415,7 +425,9 @@
         },
         "security": [
           {
-            "api_key": []
+            "travelagency_auth": [
+              "read:tours"
+            ]
           }
         ]
       },
@@ -498,7 +510,6 @@
         "security": [
           {
             "travelagency_auth": [
-              "write:tours",
               "read:tours"
             ]
           }
@@ -543,7 +554,6 @@
         "security": [
           {
             "travelagency_auth": [
-              "write:tours",
               "read:tours"
             ]
           }
@@ -579,7 +589,14 @@
           "400": {
             "description": "Bad request"
           }
-        }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:locations"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -658,9 +675,6 @@
           "201": {
             "description": "Location created"
           },
-          "204": {
-            "description": "No content for updating"
-          },
           "400": {
             "description": "Invalid ID supplied"
           },
@@ -719,7 +733,9 @@
         },
         "security": [
           {
-            "api_key": []
+            "travelagency_auth": [
+              "read:locations"
+            ]
           }
         ]
       },
@@ -793,7 +809,14 @@
           "400": {
             "description": "Bad request"
           }
-        }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:countries"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -872,9 +895,6 @@
           "201": {
             "description": "Country created"
           },
-          "204": {
-            "description": "No content for updating"
-          },
           "400": {
             "description": "Invalid ID supplied"
           },
@@ -932,7 +952,9 @@
         },
         "security": [
           {
-            "api_key": []
+            "travelagency_auth": [
+              "read:countries"
+            ]
           }
         ]
       },
@@ -992,11 +1014,6 @@
         "write:countries": "modify countries in your account",
         "read:countries": "read your countries"
       }
-    },
-    "api_key": {
-      "type": "apiKey",
-      "name": "api_key",
-      "in": "header"
     }
   },
   "definitions": {
