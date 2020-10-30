@@ -1,0 +1,160 @@
+C:\Users\Rachm>curl -v http://localhost:8080/tour
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 30 Oct 2020 16:09:56 GMT
+<
+[{"id":1,"location":"France - Paris","startDate":"01/01/2021","endDate":"03/01/2021","transport":"bus"},{"id":2,"location":"USA - New York","startDate":"05/06/2021","endDate":"10/06/2021","transport":"plane"},{"id":3,"location":"Japan - Tokio","startDate":"12/12/2021","endDate":"23/12/2021","transport":"plane"}]* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v -X"DELETE" http://localhost:8080/tour/3
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> DELETE /tour/3 HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 104
+< Date: Fri, 30 Oct 2020 16:10:47 GMT
+<
+Tour has been set for deletion. Confirm the deletion by sending DELETE request to /confirmTourDeletion/3* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v http://localhost:8080/tour
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 30 Oct 2020 16:11:09 GMT
+<
+[{"id":1,"location":"France - Paris","startDate":"01/01/2021","endDate":"03/01/2021","transport":"bus"},{"id":2,"location":"USA - New York","startDate":"05/06/2021","endDate":"10/06/2021","transport":"plane"},{"id":3,"location":"Japan - Tokio","startDate":"12/12/2021","endDate":"23/12/2021","transport":"plane"}]* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v -X"DELETE" http://localhost:8080/confirmTourDeletion/3
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> DELETE /confirmTourDeletion/3 HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 50
+< Date: Fri, 30 Oct 2020 16:11:19 GMT
+<
+Deletion was confirmed. Tour successfully deleted!* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v http://localhost:8080/tour
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 30 Oct 2020 16:11:37 GMT
+<
+[{"id":1,"location":"France - Paris","startDate":"01/01/2021","endDate":"03/01/2021","transport":"bus"},{"id":2,"location":"USA - New York","startDate":"05/06/2021","endDate":"10/06/2021","transport":"plane"}]* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v -X"DELETE" http://localhost:8080/tour/123456
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> DELETE /tour/123456 HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 404
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 41
+< Date: Fri, 30 Oct 2020 16:11:57 GMT
+<
+Tour doesn't exist and cannot be deleted.* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v -X"DELETE" http://localhost:8080/confirmTourDeletion/2
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> DELETE /confirmTourDeletion/2 HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 400
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 29
+< Date: Fri, 30 Oct 2020 16:12:07 GMT
+< Connection: close
+<
+Tour isn't set to be deleted!* Closing connection 0
+
+C:\Users\Rachm>curl -v -X"DELETE" http://localhost:8080/tour/2
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> DELETE /tour/2 HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 104
+< Date: Fri, 30 Oct 2020 16:12:15 GMT
+<
+Tour has been set for deletion. Confirm the deletion by sending DELETE request to /confirmTourDeletion/2* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v -X"DELETE" http://localhost:8080/confirmTourDeletion/2
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> DELETE /confirmTourDeletion/2 HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 50
+< Date: Fri, 30 Oct 2020 16:12:32 GMT
+<
+Deletion was confirmed. Tour successfully deleted!* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v http://localhost:8080/tour
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 30 Oct 2020 16:12:42 GMT
+<
+[{"id":1,"location":"France - Paris","startDate":"01/01/2021","endDate":"03/01/2021","transport":"bus"}]* Connection #0 to host localhost left intact

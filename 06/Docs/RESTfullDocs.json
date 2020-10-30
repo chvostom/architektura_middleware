@@ -1,0 +1,139 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Solution of 6th homework for NI-AM1 subject.\n",
+    "version": "1.0.0",
+    "title": "AM1 - Travel Agency",
+    "contact": {
+      "email": "chvostom@fit.cvut.cz"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "tour",
+      "description": "Services about tours"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/tour": {
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Get all tours",
+        "operationId": "getTours",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tour"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/tour/{id}": {
+      "delete": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Set tour for deletion",
+        "operationId": "setTourForDeletion",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Tour id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tour has been set for deletion. Confirm the deletion!"
+          },
+          "404": {
+            "description": "Tour doesn't exist and cannot be deleted."
+          }
+        }
+      }
+    },
+    "/confirmTourDeletion/{id}": {
+      "delete": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Deletes a tour",
+        "operationId": "deleteTour",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Tour id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion was confirmed. Tour successfully deleted!"
+          },
+          "400": {
+            "description": "Tour isn't set to be deleted!"
+          },
+          "404": {
+            "description": "This tour either doesn't exist!"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Tour": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "location": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string"
+        },
+        "endDate": {
+          "type": "string"
+        },
+        "transport": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tour"
+      }
+    }
+  }
+}

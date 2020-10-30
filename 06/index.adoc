@@ -1,1 +1,21 @@
-= HW6 - TBD!
+# Homework 6. RESTfull - Asynchronous operation
+
+## Task
+
+Design and implement simple service for removal of a tour from a database.
+
+DELETE /tour/{id}
+
+Assume that the operation requires confirmation by human. Design and implement the operation in an asynchronous manner. Note: It should not be implemented as synchronous operation! You can simulate the confirmation as a delay of 10s or implement another service to confirm deletion.
+
+## Documentation
+Documentation is in Docs/documentation folder. Just open file index.html.
+
+In case a problem occurs, there is also swagger JSON file (RESTfullDocs.json) and also generated PDF (RESTfullDocs.pdf).
+
+## Implementation
+
+Codes of the implementation are in src/ folder.
+
+## Output
+cURL example commands are in cURLexample.txt file.
