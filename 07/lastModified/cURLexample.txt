@@ -1,0 +1,86 @@
+C:\Users\Rachm>curl -v http://localhost:8080/tour
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+>
+< HTTP/1.1 200
+< Last-Modified: Fri, 30 Oct 2020 21:39:47 GMT
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 30 Oct 2020 21:40:32 GMT
+<
+[{"id":1,"name":"Tour to Prague","customers":["Jan Novak","Tereza Stehlikova"]},{"id":2,"name":"Tour to New York","customers":["Josef Dolezal","Josef Sedlacek"]}]* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v http://localhost:8080/tour -H "If-Modified-Since: Fri, 30 Oct 2020 21:39:47 GMT"
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+> If-Modified-Since: Fri, 30 Oct 2020 21:39:48 GMT
+>
+< HTTP/1.1 304
+< Last-Modified: Fri, 30 Oct 2020 21:39:47 GMT
+< Date: Fri, 30 Oct 2020 21:41:13 GMT
+<
+* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v -X PUT "http://localhost:8080/tour" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":3,\"name\":\"Boat tour\",\"customers\":[]}"
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> PUT /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> accept: */*
+> Content-Type: application/json
+> Content-Length: 42
+>
+* upload completely sent off: 42 out of 42 bytes
+< HTTP/1.1 201
+< Last-Modified: Fri, 30 Oct 2020 21:42:43 GMT
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 17
+< Date: Fri, 30 Oct 2020 21:42:43 GMT
+<
+Tour was created!* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v http://localhost:8080/tour -H "If-Modified-Since: Fri, 30 Oct 2020 21:39:48 GMT"
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+> If-Modified-Since: Fri, 30 Oct 2020 21:39:48 GMT
+>
+< HTTP/1.1 200
+< Last-Modified: Fri, 30 Oct 2020 21:42:43 GMT
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Fri, 30 Oct 2020 21:43:13 GMT
+<
+[{"id":1,"name":"Tour to Prague","customers":["Jan Novak","Tereza Stehlikova"]},{"id":2,"name":"Tour to New York","customers":["Josef Dolezal","Josef Sedlacek"]},{"id":3,"name":"Boat tour","customers":[]}]* Connection #0 to host localhost left intact
+
+C:\Users\Rachm>curl -v http://localhost:8080/tour -H "If-Modified-Since: Fri, 30 Oct 2020 21:42:43 GMT"
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.55.1
+> Accept: */*
+> If-Modified-Since: Fri, 30 Oct 2020 21:42:43 GMT
+>
+< HTTP/1.1 304
+< Last-Modified: Fri, 30 Oct 2020 21:42:43 GMT
+< Date: Fri, 30 Oct 2020 21:43:44 GMT
+<
+* Connection #0 to host localhost left intact

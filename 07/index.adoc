@@ -1,1 +1,21 @@
-= HW7 - TBD!
+# Homework 7. RESTfull - Conditional GET
+
+## Task
+
+Design and implement a simple service for retrieval of a list of tours. The service should provide support for "Conditinal GET" requests. For this, you need to provide support for HTTP caching using the Last-Modified and ETag headers. Implement two versions using ETags: using strong ETags and using weak ETags. For weak ETag use only the id and the name of each tour. Do not forget to show examples of communication including all HTTP headers (cURL commands and log from communicaiton).
+
+## Documentation
+Documentation is in Docs/documentation folder. Just open file index.html.
+
+In case a problem occurs, there is also swagger JSON file (RestApiDocs.json) and also generated PDF (RestApiDocs.pdf).
+
+## Implementation
+
+Code of the implementation with support for HTTP caching using the Last-Modified is in lastModified/src folder.
+
+Code of the implementation with support for HTTP caching using strong ETag is in strongETag/src folder.
+
+Code of the implementation with support for HTTP caching using weak ETag is in weakETag/src folder.
+
+## Output
+cURL example commands are in cURL.txt file (3 files in lastModified/, strong/ and weak/ folders).

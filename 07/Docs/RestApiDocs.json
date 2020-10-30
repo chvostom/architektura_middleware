@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Solution of 7th homework for NI-AM1 subject.\n",
+    "version": "1.0.0",
+    "title": "AM1 - Travel Agency",
+    "contact": {
+      "email": "chvostom@fit.cvut.cz"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "tour",
+      "description": "Services about tours"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/tour": {
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Get all tours",
+        "operationId": "getTours",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tour"
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Update an existing tour",
+        "operationId": "updateTour",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Tour object that needs to be updated in the travel agency database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tour"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tour successfully updated"
+          },
+          "201": {
+            "description": "Tour created"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Tour": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "customers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "xml": {
+        "name": "Tour"
+      }
+    }
+  }
+}
