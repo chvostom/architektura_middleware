@@ -150,9 +150,6 @@
           "400": {
             "description": "Invalid ID supplied"
           },
-          "404": {
-            "description": "Customer not found"
-          },
           "405": {
             "description": "Validation exception"
           }
@@ -369,9 +366,6 @@
           },
           "400": {
             "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Tour not found"
           },
           "405": {
             "description": "Validation exception"
@@ -678,9 +672,6 @@
           "400": {
             "description": "Invalid ID supplied"
           },
-          "404": {
-            "description": "Location not found"
-          },
           "405": {
             "description": "Validation exception"
           }
@@ -897,9 +888,6 @@
           },
           "400": {
             "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Country not found"
           },
           "405": {
             "description": "Validation exception"
