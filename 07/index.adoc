@@ -18,4 +18,4 @@ Code of the implementation with support for HTTP caching using strong ETag is in
 Code of the implementation with support for HTTP caching using weak ETag is in weakETag/src folder.
 
 ## Output
-cURL example commands are in cURL.txt file (3 files in lastModified/, strong/ and weak/ folders).
+cURL example commands are in cURL.txt file (3 files in lastModified/, strongETag/ and weakETag/ folders).

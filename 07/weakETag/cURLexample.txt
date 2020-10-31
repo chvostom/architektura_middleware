@@ -1,0 +1,95 @@
+Rachm@DESKTOP-D4GHI43 MINGW64 ~/Desktop
+$ curl -s -v http://localhost:8080/tour
+[{"id":1,"name":"Tour to Prague","customers":["Jan Novak","Tereza Stehlikova"]},{"id":2,"name":"Tour to New York","customers":["Josef Dolezal","Josef Sedlacek"]}]*   Trying ::1:8080...
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.69.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200
+< ETag: "e3686616964"
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Sat, 31 Oct 2020 10:00:49 GMT
+<
+{ [168 bytes data]
+* Connection #0 to host localhost left intact
+
+Rachm@DESKTOP-D4GHI43 MINGW64 ~/Desktop
+$ curl -s -v -H'If-None-Match: "e3686616964"' http://localhost:8080/tour
+*   Trying ::1:8080...
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.69.1
+> Accept: */*
+> If-None-Match: "e3686616964"
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 304
+< ETag: "e3686616964"
+< Date: Sat, 31 Oct 2020 10:01:02 GMT
+<
+* Connection #0 to host localhost left intact
+
+Rachm@DESKTOP-D4GHI43 MINGW64 ~/Desktop
+$ curl -s -v -X PUT "http://localhost:8080/tour" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":3,\"name\":\"Boat tour\",\"customers\":[]}"
+Tour was created!*   Trying ::1:8080...
+* Connected to localhost (::1) port 8080 (#0)
+> PUT /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.69.1
+> accept: */*
+> Content-Type: application/json
+> Content-Length: 42
+>
+} [42 bytes data]
+* upload completely sent off: 42 out of 42 bytes
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 201
+< ETag: "f2647515593"
+< Content-Type: text/plain;charset=UTF-8
+< Content-Length: 17
+< Date: Sat, 31 Oct 2020 10:01:18 GMT
+<
+{ [17 bytes data]
+* Connection #0 to host localhost left intact
+
+Rachm@DESKTOP-D4GHI43 MINGW64 ~/Desktop
+$ curl -s -v -H'If-None-Match: "e3686616964"' http://localhost:8080/tour
+[{"id":1,"name":"Tour to Prague","customers":["Jan Novak","Tereza Stehlikova"]},{"id":2,"name":"Tour to New York","customers":["Josef Dolezal","Josef Sedlacek"]},{"id":3,"name":"Boat tour","customers":[]}]*   Trying ::1:8080...
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.69.1
+> Accept: */*
+> If-None-Match: "e3686616964"
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200
+< ETag: "f2647515593"
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Sat, 31 Oct 2020 10:01:26 GMT
+<
+{ [211 bytes data]
+* Connection #0 to host localhost left intact
+
+Rachm@DESKTOP-D4GHI43 MINGW64 ~/Desktop
+$ curl -s -v -H'If-None-Match: "f2647515593"' http://localhost:8080/tour
+*   Trying ::1:8080...
+* Connected to localhost (::1) port 8080 (#0)
+> GET /tour HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.69.1
+> Accept: */*
+> If-None-Match: "f2647515593"
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 304
+< ETag: "f2647515593"
+< Date: Sat, 31 Oct 2020 10:01:57 GMT
+<
+* Connection #0 to host localhost left intact

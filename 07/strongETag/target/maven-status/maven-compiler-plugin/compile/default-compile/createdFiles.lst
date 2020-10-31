@@ -1,0 +1,4 @@
+rest\RestApplication.class
+rest\RestApplicationRepository.class
+entities\Tour.class
+rest\RestApplicationController.class
