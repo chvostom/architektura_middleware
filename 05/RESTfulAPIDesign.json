@@ -1,0 +1,1533 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AM1 - Travel Agency",
+    "description": "Solution of homework for NI-AM1 subject.\n",
+    "contact": {
+      "email": "chvostom@fit.cvut.cz"
+    },
+    "version": "1.0.0-oas3"
+  },
+  "servers": [
+    {
+      "url": "http://t-a.org"
+    }
+  ],
+  "tags": [
+    {
+      "name": "customer",
+      "description": "All services about customers"
+    },
+    {
+      "name": "tour",
+      "description": "All services about tours"
+    },
+    {
+      "name": "location",
+      "description": "All services about locations"
+    },
+    {
+      "name": "country",
+      "description": "All services about countries"
+    }
+  ],
+  "paths": {
+    "/customer": {
+      "get": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Get all customers",
+        "operationId": "getCustomers",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Customer"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Customer"
+                  }
+                }
+              }
+            },
+            "links": {
+              "Getallcustomers": {
+                "operationId": "getCustomers",
+                "description": "`GET /customer`\n"
+              },
+              "GetCustomerById": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              },
+              "CreateCustomer": {
+                "operationId": "createCustomer",
+                "description": "`POST /customer`\n"
+              },
+              "UpdateCustomer": {
+                "operationId": "updateCustomer",
+                "description": "`PUT /customer`\n"
+              },
+              "DeleteCustomer": {
+                "operationId": "deleteCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /customer/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:customers"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Update an existing customer",
+        "operationId": "updateCustomer",
+        "requestBody": {
+          "description": "Customer object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Customer successfully updated",
+            "links": {
+              "GetCustomerById": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              }
+            }
+          },
+          "201": {
+            "description": "Customer created",
+            "links": {
+              "GetCustomerById": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:customers",
+              "read:customers"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Add a new customer to travel agency database",
+        "operationId": "addCustomer",
+        "requestBody": {
+          "description": "Customer object that needs to be added to the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Customer successfully created",
+            "links": {
+              "GetCustomerById": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:customers",
+              "read:customers"
+            ]
+          }
+        ]
+      }
+    },
+    "/customer/{customerId}": {
+      "get": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Find customer by ID",
+        "description": "Returns a single customer",
+        "operationId": "getCustomerById",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            },
+            "links": {
+              "GetSelfCustomer": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              },
+              "GetNextCustomer": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              },
+              "UpdateCustomer": {
+                "operationId": "updateCustomer",
+                "description": "`PUT /customer`\n"
+              },
+              "DeleteCustomer": {
+                "operationId": "deleteCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /customer/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:customers"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Deletes a customer",
+        "operationId": "deleteCustomer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "Customer id to delete",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer successfully deleted",
+            "links": {
+              "Getallcustomers": {
+                "operationId": "getCustomers",
+                "description": "`GET /customer`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:customers",
+              "read:customers"
+            ]
+          }
+        ]
+      }
+    },
+    "/tour": {
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Get all tours",
+        "operationId": "getTours",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tour"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tour"
+                  }
+                }
+              }
+            },
+            "links": {
+              "Getalltours": {
+                "operationId": "getTours",
+                "description": "`GET /tour`\n"
+              },
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              },
+              "CreateTour": {
+                "operationId": "createTour",
+                "description": "`POST /tour`\n"
+              },
+              "UpdateTour": {
+                "operationId": "updateTour",
+                "description": "`PUT /tour`\n"
+              },
+              "DeleteTour": {
+                "operationId": "deleteTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:tours"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Update an existing tour",
+        "operationId": "updateTour",
+        "requestBody": {
+          "description": "Tour object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Tour successfully updated",
+            "links": {
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              }
+            }
+          },
+          "201": {
+            "description": "Tour created",
+            "links": {
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:tours",
+              "read:tours"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Add a new tour to travel agency database",
+        "operationId": "addTour",
+        "requestBody": {
+          "description": "Tour object that needs to be added to the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Tour created",
+            "links": {
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:tours",
+              "read:tours"
+            ]
+          }
+        ]
+      }
+    },
+    "/tour/{tourId}": {
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Find tour by ID",
+        "description": "Returns a single tour",
+        "operationId": "getTourById",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "ID of tour to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tour"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tour"
+                }
+              }
+            },
+            "links": {
+              "GetSelfTour": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              },
+              "GetNextTour": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              },
+              "UpdateTour": {
+                "operationId": "updateTour",
+                "description": "`PUT /tour`\n"
+              },
+              "DeleteTour": {
+                "operationId": "deleteTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Tour not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:tours"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Deletes a tour",
+        "operationId": "deleteTour",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "Tour id to delete",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tour successfully deleted",
+            "links": {
+              "Getalltours": {
+                "operationId": "getTours",
+                "description": "`GET /tour`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Tour not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:tours",
+              "read:tours"
+            ]
+          }
+        ]
+      }
+    },
+    "/tour/findByCustomer": {
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Finds tours by customer",
+        "operationId": "findToursByCustomer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "query",
+            "description": "Customer value for filtering",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tour"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tour"
+                  }
+                }
+              }
+            },
+            "links": {
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid customer id value"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:tours"
+            ]
+          }
+        ]
+      }
+    },
+    "/tour/findByLocation": {
+      "get": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Finds tours by location",
+        "operationId": "findToursByLocation",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "query",
+            "description": "Location value for filtering",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tour"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tour"
+                  }
+                }
+              }
+            },
+            "links": {
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid location id value"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:tours"
+            ]
+          }
+        ]
+      }
+    },
+    "/location": {
+      "get": {
+        "tags": [
+          "location"
+        ],
+        "summary": "Get all locations",
+        "operationId": "getLocations",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Location"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Location"
+                  }
+                }
+              }
+            },
+            "links": {
+              "Getalllocations": {
+                "operationId": "getLocations",
+                "description": "`GET /location`\n"
+              },
+              "GetLocationById": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              },
+              "CreateLocation": {
+                "operationId": "createLocation",
+                "description": "`POST /location`\n"
+              },
+              "UpdateLocation": {
+                "operationId": "updateLocation",
+                "description": "`PUT /location`\n"
+              },
+              "DeleteLocation": {
+                "operationId": "deleteLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /location/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:locations"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "location"
+        ],
+        "summary": "Update an existing location",
+        "operationId": "updateLocation",
+        "requestBody": {
+          "description": "Location object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Location successfully updated",
+            "links": {
+              "GetLocationById": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              }
+            }
+          },
+          "201": {
+            "description": "Location created",
+            "links": {
+              "GetLocationById": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:locations",
+              "read:locations"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "location"
+        ],
+        "summary": "Add a new location to travel agency database",
+        "operationId": "addLocation",
+        "requestBody": {
+          "description": "Location object that needs to be added to the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Location created",
+            "links": {
+              "GetLocationById": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:locations",
+              "read:locations"
+            ]
+          }
+        ]
+      }
+    },
+    "/location/{locationId}": {
+      "get": {
+        "tags": [
+          "location"
+        ],
+        "summary": "Find location by ID",
+        "description": "Returns a single location",
+        "operationId": "getLocationById",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "ID of location to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            },
+            "links": {
+              "GetSelfLocation": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              },
+              "GetNextLocation": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              },
+              "UpdateLocation": {
+                "operationId": "updateLocation",
+                "description": "`PUT /location`\n"
+              },
+              "DeleteLocation": {
+                "operationId": "deleteLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /location/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:locations"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "location"
+        ],
+        "summary": "Deletes a location",
+        "operationId": "deleteLocation",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "Location id to delete",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location successfully deleted",
+            "links": {
+              "Getalllocations": {
+                "operationId": "getLocations",
+                "description": "`GET /location`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:locations",
+              "read:locations"
+            ]
+          }
+        ]
+      }
+    },
+    "/country": {
+      "get": {
+        "tags": [
+          "country"
+        ],
+        "summary": "Get all countries",
+        "operationId": "getCountries",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              }
+            },
+            "links": {
+              "Getallcountries": {
+                "operationId": "getCountries",
+                "description": "`GET /country`\n"
+              },
+              "GetCountryById": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              },
+              "CreateCountry": {
+                "operationId": "createCountry",
+                "description": "`POST /country`\n"
+              },
+              "UpdateCountry": {
+                "operationId": "updateCountry",
+                "description": "`PUT /country`\n"
+              },
+              "DeleteCountry": {
+                "operationId": "deleteCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /country/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:countries"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "country"
+        ],
+        "summary": "Update an existing country",
+        "operationId": "updateCountry",
+        "requestBody": {
+          "description": "Country object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Country successfully updated",
+            "links": {
+              "GetCountryById": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              }
+            }
+          },
+          "201": {
+            "description": "Country created",
+            "links": {
+              "GetCountryById": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:countries",
+              "read:countries"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "country"
+        ],
+        "summary": "Add a new country to travel agency database",
+        "operationId": "addCountry",
+        "requestBody": {
+          "description": "Country object that needs to be added to the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Country created",
+            "links": {
+              "GetCountryById": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:countries",
+              "read:countries"
+            ]
+          }
+        ]
+      }
+    },
+    "/country/{countryId}": {
+      "get": {
+        "tags": [
+          "country"
+        ],
+        "summary": "Find country by ID",
+        "description": "Returns a single country",
+        "operationId": "getCountryById",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of country to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            },
+            "links": {
+              "GetSelfCountry": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              },
+              "GetNextCountry": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              },
+              "UpdateCountry": {
+                "operationId": "updateCountry",
+                "description": "`PUT /country`\n"
+              },
+              "DeleteCountry": {
+                "operationId": "deleteCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`DELETE /country/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Country not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "read:countries"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "country"
+        ],
+        "summary": "Deletes a country",
+        "operationId": "deleteCountry",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "Country id to delete",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Country successfully deleted",
+            "links": {
+              "Getallcountries": {
+                "operationId": "getCountries",
+                "description": "`GET /country`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Country not found"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:countries",
+              "read:countries"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "surname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Customer"
+        }
+      },
+      "Tour": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transport": {
+            "type": "string",
+            "enum": [
+              "car",
+              "bus",
+              "train",
+              "plane",
+              "boat"
+            ]
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Customer"
+            }
+          }
+        },
+        "xml": {
+          "name": "Tour"
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "countryId": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Location"
+        }
+      },
+      "Country": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            }
+          }
+        },
+        "xml": {
+          "name": "Country"
+        }
+      }
+    },
+    "securitySchemes": {
+      "travelagency_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://travelagency.swagger.io/oauth/dialog",
+            "scopes": {
+              "write:customers": "modify customers in your account",
+              "read:customers": "read your customers",
+              "write:tours": "modify tour in your account",
+              "read:tours": "read your tours",
+              "write:locations": "modify locations in your account",
+              "read:locations": "read your locations",
+              "write:countries": "modify countries in your account",
+              "read:countries": "read your countries"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,6 +8,6 @@ Design view on data model and design and describe the URIs of resources (At leas
 
 ## Implementation
 
-Documentation is in RESTAPIdocumentation folder. Just open file index.html.
+Documentation is on this link: https://app.swaggerhub.com/apis/chvostom/AM1-RESTApiDocumentation/1.0.0-oas3
 
-In case a problem occurs, there is also swagger JSON file in SwaggerJSON folder and also generated PDF in SwaggerPDF folder.
+In case a problem occurs, there is also swagger JSON file (RESTfulAPIDesign.json).
