@@ -78,7 +78,10 @@
               },
               "UpdateCustomer": {
                 "operationId": "updateCustomer",
-                "description": "`PUT /customer`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /customer/{id}`\n"
               },
               "DeleteCustomer": {
                 "operationId": "deleteCustomer",
@@ -96,69 +99,6 @@
         "security": [
           {
             "travelagency_auth": [
-              "read:customers"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "customer"
-        ],
-        "summary": "Update an existing customer",
-        "operationId": "updateCustomer",
-        "requestBody": {
-          "description": "Customer object that needs to be updated in the travel agency database",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Customer"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Customer"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Customer successfully updated",
-            "links": {
-              "GetCustomerById": {
-                "operationId": "getCustomer",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /customer/{id}`\n"
-              }
-            }
-          },
-          "201": {
-            "description": "Customer created",
-            "links": {
-              "GetCustomerById": {
-                "operationId": "getCustomer",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /customer/{id}`\n"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "travelagency_auth": [
-              "write:customers",
               "read:customers"
             ]
           }
@@ -270,7 +210,10 @@
               },
               "UpdateCustomer": {
                 "operationId": "updateCustomer",
-                "description": "`PUT /customer`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /customer/{id}`\n"
               },
               "DeleteCustomer": {
                 "operationId": "deleteCustomer",
@@ -291,6 +234,71 @@
         "security": [
           {
             "travelagency_auth": [
+              "read:customers"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Update an existing customer",
+        "operationId": "updateCustomer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Customer object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Customer successfully updated",
+            "links": {
+              "GetCustomerById": {
+                "operationId": "getCustomer",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /customer/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:customers",
               "read:customers"
             ]
           }
@@ -350,6 +358,32 @@
         ],
         "summary": "Get all tours",
         "operationId": "getTours",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "query",
+            "description": "Customer value for filtering",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "description": "Location value for filtering",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -389,7 +423,10 @@
               },
               "UpdateTour": {
                 "operationId": "updateTour",
-                "description": "`PUT /tour`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /tour/{id}`\n"
               },
               "DeleteTour": {
                 "operationId": "deleteTour",
@@ -407,69 +444,6 @@
         "security": [
           {
             "travelagency_auth": [
-              "read:tours"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "tour"
-        ],
-        "summary": "Update an existing tour",
-        "operationId": "updateTour",
-        "requestBody": {
-          "description": "Tour object that needs to be updated in the travel agency database",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tour"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Tour"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Tour successfully updated",
-            "links": {
-              "GetTourById": {
-                "operationId": "getTour",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /tour/{id}`\n"
-              }
-            }
-          },
-          "201": {
-            "description": "Tour created",
-            "links": {
-              "GetTourById": {
-                "operationId": "getTour",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /tour/{id}`\n"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "travelagency_auth": [
-              "write:tours",
               "read:tours"
             ]
           }
@@ -581,7 +555,10 @@
               },
               "UpdateTour": {
                 "operationId": "updateTour",
-                "description": "`PUT /tour`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /tour/{id}`\n"
               },
               "DeleteTour": {
                 "operationId": "deleteTour",
@@ -602,6 +579,71 @@
         "security": [
           {
             "travelagency_auth": [
+              "read:tours"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "tour"
+        ],
+        "summary": "Update an existing tour",
+        "operationId": "updateTour",
+        "parameters": [
+          {
+            "name": "tourId",
+            "in": "path",
+            "description": "ID of tour to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Tour object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Tour"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Tour successfully updated",
+            "links": {
+              "GetTourById": {
+                "operationId": "getTour",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /tour/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:tours",
               "read:tours"
             ]
           }
@@ -654,136 +696,6 @@
         ]
       }
     },
-    "/tour/findByCustomer": {
-      "get": {
-        "tags": [
-          "tour"
-        ],
-        "summary": "Finds tours by customer",
-        "operationId": "findToursByCustomer",
-        "parameters": [
-          {
-            "name": "customerId",
-            "in": "query",
-            "description": "Customer value for filtering",
-            "required": true,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tour"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tour"
-                  }
-                }
-              }
-            },
-            "links": {
-              "GetTourById": {
-                "operationId": "getTour",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /tour/{id}`\n"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid customer id value"
-          }
-        },
-        "security": [
-          {
-            "travelagency_auth": [
-              "read:tours"
-            ]
-          }
-        ]
-      }
-    },
-    "/tour/findByLocation": {
-      "get": {
-        "tags": [
-          "tour"
-        ],
-        "summary": "Finds tours by location",
-        "operationId": "findToursByLocation",
-        "parameters": [
-          {
-            "name": "locationId",
-            "in": "query",
-            "description": "Location value for filtering",
-            "required": true,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tour"
-                  }
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tour"
-                  }
-                }
-              }
-            },
-            "links": {
-              "GetTourById": {
-                "operationId": "getTour",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /tour/{id}`\n"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid location id value"
-          }
-        },
-        "security": [
-          {
-            "travelagency_auth": [
-              "read:tours"
-            ]
-          }
-        ]
-      }
-    },
     "/location": {
       "get": {
         "tags": [
@@ -830,7 +742,10 @@
               },
               "UpdateLocation": {
                 "operationId": "updateLocation",
-                "description": "`PUT /location`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /location/{id}`\n"
               },
               "DeleteLocation": {
                 "operationId": "deleteLocation",
@@ -848,69 +763,6 @@
         "security": [
           {
             "travelagency_auth": [
-              "read:locations"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "location"
-        ],
-        "summary": "Update an existing location",
-        "operationId": "updateLocation",
-        "requestBody": {
-          "description": "Location object that needs to be updated in the travel agency database",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Location"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Location"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Location successfully updated",
-            "links": {
-              "GetLocationById": {
-                "operationId": "getLocation",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /location/{id}`\n"
-              }
-            }
-          },
-          "201": {
-            "description": "Location created",
-            "links": {
-              "GetLocationById": {
-                "operationId": "getLocation",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /location/{id}`\n"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "travelagency_auth": [
-              "write:locations",
               "read:locations"
             ]
           }
@@ -1022,7 +874,10 @@
               },
               "UpdateLocation": {
                 "operationId": "updateLocation",
-                "description": "`PUT /location`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /location/{id}`\n"
               },
               "DeleteLocation": {
                 "operationId": "deleteLocation",
@@ -1043,6 +898,71 @@
         "security": [
           {
             "travelagency_auth": [
+              "read:locations"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "location"
+        ],
+        "summary": "Update an existing location",
+        "operationId": "updateLocation",
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "path",
+            "description": "ID of location to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Location object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Location successfully updated",
+            "links": {
+              "GetLocationById": {
+                "operationId": "getLocation",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /location/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:locations",
               "read:locations"
             ]
           }
@@ -1141,7 +1061,10 @@
               },
               "UpdateCountry": {
                 "operationId": "updateCountry",
-                "description": "`PUT /country`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /country/{id}`\n"
               },
               "DeleteCountry": {
                 "operationId": "deleteCountry",
@@ -1159,69 +1082,6 @@
         "security": [
           {
             "travelagency_auth": [
-              "read:countries"
-            ]
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "country"
-        ],
-        "summary": "Update an existing country",
-        "operationId": "updateCountry",
-        "requestBody": {
-          "description": "Country object that needs to be updated in the travel agency database",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Country"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/Country"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Country successfully updated",
-            "links": {
-              "GetCountryById": {
-                "operationId": "getCountry",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /country/{id}`\n"
-              }
-            }
-          },
-          "201": {
-            "description": "Country created",
-            "links": {
-              "GetCountryById": {
-                "operationId": "getCountry",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "`GET /country/{id}`\n"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "travelagency_auth": [
-              "write:countries",
               "read:countries"
             ]
           }
@@ -1332,7 +1192,10 @@
               },
               "UpdateCountry": {
                 "operationId": "updateCountry",
-                "description": "`PUT /country`\n"
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`PUT /country/{id}`\n"
               },
               "DeleteCountry": {
                 "operationId": "deleteCountry",
@@ -1353,6 +1216,82 @@
         "security": [
           {
             "travelagency_auth": [
+              "read:countries"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "country"
+        ],
+        "summary": "Update an existing country",
+        "operationId": "updateCountry",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "description": "ID of country to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Country object that needs to be updated in the travel agency database",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Country successfully updated",
+            "links": {
+              "GetCountryById": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              }
+            }
+          },
+          "201": {
+            "description": "Country created",
+            "links": {
+              "GetCountryById": {
+                "operationId": "getCountry",
+                "parameters": {
+                  "id": "$response.body#/id"
+                },
+                "description": "`GET /country/{id}`\n"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "travelagency_auth": [
+              "write:countries",
               "read:countries"
             ]
           }
