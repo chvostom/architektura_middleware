@@ -1,1 +1,36 @@
-= HW8 - TBD!
+# Homework 8. JMS - Message Forwarding
+
+## Task
+
+Your task is to implement a process using queues. The process 1) collects all processing orders in one queue (new bookings, and new trips), 2) then the orders are distributed to two different queues, and finally, 3) they are processed by dedicated processor agents. In the process are involved four agents:
+
+1) order client - submits a new order or add a new trip message - acts as a message producer
+
+2) order processor - retrieves an order message and forwards it to the appropriate queue - acts as message producer and consumer
+
+3) bookings processor - process a booking message - acts as message consumer
+
+4) new trip processor - processes a new trip message - acts as a message consumer
+
+
+The scenario is defined as follows:
+
+1) the “order client” - adds an order (booking order, or add new trip) in the “all orders queue”
+
+2) the “order processor” - retrieves an order message, and it forwards it to the “bookings queue” for a booking message, and to “new trips queue” for a new trip message.
+
+3) the “bookings processor” - reads a booking message from the “bookings queue” and processes it.
+
+4) the “new trip processor” - reads a “new trip message” from the “new trips queue” and processes it.
+
+
+## Implementation
+
+There are four Java projects order-client, order-processor, bookings-processor and new-trip-processor, each has own folder. 
+
+## Output - Screenshots
+Screenshots with logs are in /Screenshots/Logs folder. 
+
+Examples of orders are in Screenshots/Orders folder.
+
+Screenshot with all qeueus is in Screenshots/Qeueus folder.

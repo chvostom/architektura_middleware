@@ -1,0 +1,5 @@
+entities\Order.class
+messaging\MessageProcessingApplication.class
+messaging\QueueStats$1.class
+messaging\QueueStats.class
+messaging\MessageProducerConfig.class
