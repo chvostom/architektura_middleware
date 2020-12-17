@@ -1,1 +1,33 @@
-= HW9 - TBD!
+# Homework 9. Simple “Server-side” load balancing
+
+## Task
+
+A travel agency publishes a list of last-minute trips in xml. Since the service is consumed by many consumers, there is a requirement for load balancing.
+
+1) Implement a simple “server-side” load balancing mechanism that will regularly monitor the “health” of the available services, maintain lists of “healthy” and “unhealthy” services and forward requests to any “healthy” service from the list.
+
+2) The pool of already implemented services for listing of last-minute trips is:
+
+-  http://147.32.233.18:8888/MI-MDW-LastMinute1/list
+-  http://147.32.233.18:8888/MI-MDW-LastMinute2/list
+-  http://147.32.233.18:8888/MI-MDW-LastMinute3/list
+
+3) Monitor those services regularly (See the “Examples” section). Each service can successfully return the list or raise an error. Each services will stay in the state for some time depending on the load.
+
+- Service is OK –> Status code: 200
+- Service is not available –> Status code: 500
+
+4) Implement a proxy servlet that will forward/distribute requests only to one of running “healthy” services.
+
+- The main functionality of the servlet is to select a “healthy” service from the list and forward the request (See the “Examples” section for a proxy servlet implementation).
+- You can choose algorithm for distribution of the requests to services from the list of “healthy” services e.g. round-robin.
+
+5) You can implement the monitoring as a background task (e.g. using Java Threads). It can be also simplified and implemented as part of Proxy servlet that will check the health of services before/after the forwarding.
+
+
+## Implementation
+
+Commented source code is in /main/java/services folder.
+
+## Output - Screenshots
+Screenshote with logs is in LogsScreenshot.png file.

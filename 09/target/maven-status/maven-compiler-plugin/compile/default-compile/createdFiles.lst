@@ -1,0 +1,6 @@
+services\Service.class
+services\RestApplicationController.class
+services\ProxyServlet.class
+services\URLHealthCheck.class
+services\RestApplicationController$1.class
+services\RestApplicationController$2.class
